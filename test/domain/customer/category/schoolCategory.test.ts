@@ -1,4 +1,3 @@
-
 import { SCHOOL_CATEGORY } from "domain/customer/category";
 
 /**
