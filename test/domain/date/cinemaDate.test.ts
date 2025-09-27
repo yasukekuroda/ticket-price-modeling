@@ -49,7 +49,7 @@ describe("CinemaDate", () => {
       const lateShow = dayjs().hour(20).minute(0).second(0);
       expect(new CinemaDate(lateShow.toDate()).isLateShow()).toBe(true);
     });
-    test("20時未満まではfalseを返す.", () => {
+    test("20時未満はfalseを返す.", () => {
       const notLateShow = dayjs().hour(19).minute(59).second(59);
       expect(new CinemaDate(notLateShow.toDate()).isLateShow()).toBe(false);
     });
