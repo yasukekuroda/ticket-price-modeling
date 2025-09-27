@@ -1,6 +1,6 @@
 export class Age {
   readonly MINIMUM_AGE = 0;
-  readonly MAXIMUM_AGE = 120;
+  readonly MAXIMUM_AGE = 200;
 
   constructor(public readonly value: number) {
     if (!Number.isInteger(value)) throw new Error("Age must be an integer.");

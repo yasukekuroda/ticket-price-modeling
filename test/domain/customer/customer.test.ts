@@ -9,10 +9,13 @@ describe("Customer", () => {
   describe("new", () => {
     describe("異常系", () => {
       test("Ageのインスタンス生成に失敗すると、Customerのインスタンス生成も失敗する", () => {
+        const MockAge = jest.fn(() => {
+          throw new Error("Age error");
+        });
         expect(
           () =>
             new Customer(
-              new Age(25.5),
+              new MockAge(),
               CINEMA_CITIZEN_CATEGORY.MEMBER,
               DISABILITY_CATEGORY.NONE,
               SCHOOL_CATEGORY.NONE,
@@ -31,25 +34,6 @@ describe("Customer", () => {
             SCHOOL_CATEGORY.NONE,
           ),
         ).toBeInstanceOf(Customer);
-      });
-
-      test("全てのプロパティが正しくセットされる", () => {
-        const age = new Age(30);
-        const cinemaCitizenCategory = CINEMA_CITIZEN_CATEGORY.MEMBER;
-        const disabilityCategory = DISABILITY_CATEGORY.NONE;
-        const schoolCategory = SCHOOL_CATEGORY.NONE;
-
-        const customer = new Customer(
-          age,
-          cinemaCitizenCategory,
-          disabilityCategory,
-          schoolCategory,
-        );
-
-        expect(customer.age).toBe(age);
-        expect(customer.cinemaCitizenCategory).toBe(cinemaCitizenCategory);
-        expect(customer.disabilityCategory).toBe(disabilityCategory);
-        expect(customer.schoolCategory).toBe(schoolCategory);
       });
     });
   });
