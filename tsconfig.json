@@ -5,5 +5,8 @@
     "baseUrl": "./src",
     "esModuleInterop": true,
     "strict": true,
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
   }
 }
