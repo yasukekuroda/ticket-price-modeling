@@ -13,9 +13,9 @@ describe("BestPlanCalculator", () => {
     test("シネマ会員ではなく、20歳の人が平日の20時までに映画を見る場合、一般料金になる", () => {
       const customer = new Customer(
         new Age(15),
-        CINEMA_CITIZEN_CATEGORY.MEMBER,
+        CINEMA_CITIZEN_CATEGORY.GUEST,
         DISABILITY_CATEGORY.NONE,
-        SCHOOL_CATEGORY.SENIOR_HIGH_SCHOOL,
+        SCHOOL_CATEGORY.NONE,
       );
       const cinemaDate = new CinemaDate("2025-09-01T19:59:59.000+09:00");
       expect(BestPlanCalculator.calculate(customer, cinemaDate)).toBe(
@@ -27,7 +27,7 @@ describe("BestPlanCalculator", () => {
       const customer = new Customer(
         new Age(80),
         CINEMA_CITIZEN_CATEGORY.GUEST,
-        DISABILITY_CATEGORY.HANDICAPPED,
+        DISABILITY_CATEGORY.NONE,
         SCHOOL_CATEGORY.NONE,
       );
       expect(BestPlanCalculator.calculate(customer, new CinemaDate())).toBe(

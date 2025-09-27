@@ -1,8 +1,10 @@
 import { Customer } from "domain/customer";
 import { CinemaDate } from "domain/date";
 import { Plan, Plans } from "domain/plan/core";
-import { allPlans } from "domain/plan/implementation";
-import { SeniorPlan } from "domain/plan/implementation";
+import {
+  allPlans,
+  DisabilityUnderHighSchoolStudentPlan,
+} from "domain/plan/implementation";
 
 describe("Plans", () => {
   describe("#count", () => {
@@ -42,7 +44,9 @@ describe("Plans", () => {
       expect(() => new Plans([]).bestPricePlan(new CinemaDate())).toThrow();
     });
     test("Plansが空ではない場合は最も安いPlanを返す", () => {
-      expect(allPlans.bestPricePlan(new CinemaDate())).toBe(SeniorPlan); // memo: 最も安いプランが変わった場合、本テストは失敗する.
+      expect(allPlans.bestPricePlan(new CinemaDate())).toBe(
+        DisabilityUnderHighSchoolStudentPlan,
+      ); // memo: 最も安いプランが変わった場合、本テストは失敗する.
     });
   });
 });
