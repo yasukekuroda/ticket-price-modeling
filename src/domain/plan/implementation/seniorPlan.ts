@@ -3,19 +3,18 @@ import { CinemaDate } from "domain/date";
 import { Plan } from "domain/plan/core";
 import { Price } from "domain/pricing";
 
-export const GeneralPlan: Plan = class {
+export const SeniorPlan: Plan = class {
+  static readonly MINIMUM_AGE = 70;
+
   static planName(): string {
-    return "一般";
+    return "シニア（70才以上）";
   }
 
   static isAvailable(customer: Customer): boolean {
-    return true;
+    return customer.age.value >= this.MINIMUM_AGE;
   }
 
   static price(cinemaDate: CinemaDate): Price {
-    if (cinemaDate.isCinemaDay()) return new Price(1300);
-    if (cinemaDate.isLateShow()) return new Price(1500);
-
-    return new Price(2000);
+    return new Price(1300);
   }
 };
