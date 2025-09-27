@@ -3,7 +3,7 @@
     "target": "esnext",
     "module": "commonjs",
     "baseUrl": "./src",
-
+    "esModuleInterop": true,
     "strict": true,
   }
 }
