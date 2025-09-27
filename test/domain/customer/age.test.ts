@@ -11,8 +11,8 @@ describe("Age", () => {
         expect(() => new Age(-1)).toThrow();
       });
 
-      test("120より大きい値の場合、例外が発生する", () => {
-        expect(() => new Age(121)).toThrow();
+      test("200より大きい値の場合、例外が発生する", () => {
+        expect(() => new Age(201)).toThrow();
       });
     });
 
@@ -21,8 +21,8 @@ describe("Age", () => {
         expect(new Age(0)).toBeInstanceOf(Age);
       });
 
-      test("120の場合、インスタンス生成する", () => {
-        expect(new Age(120)).toBeInstanceOf(Age);
+      test("200の場合、インスタンス生成する", () => {
+        expect(new Age(200)).toBeInstanceOf(Age);
       });
     });
   });
