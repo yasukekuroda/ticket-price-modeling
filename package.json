@@ -2,7 +2,7 @@
   "name": "ticket-price-modeling",
   "version": "1.0.0",
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "format": "prettier --write 'src/**' 'test/**'",
     "test": "jest"
@@ -12,6 +12,7 @@
     "dayjs": "^1.11.18",
     "prettier": "^3.6.2",
     "ts-jest": "^29.4.4",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.2"
   }
 }
