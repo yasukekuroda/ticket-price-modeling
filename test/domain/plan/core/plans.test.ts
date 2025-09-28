@@ -1,10 +1,10 @@
-import { Age, Customer } from "domain/customer";
-import {
-  CINEMA_CITIZEN_CATEGORY,
-  DISABILITY_CATEGORY,
-  SCHOOL_CATEGORY,
-} from "domain/customer/category";
+import { Customer } from "domain/customer";
+import { CinemaDate } from "domain/date";
 import { Plan, Plans } from "domain/plan/core";
+import {
+  allPlans,
+  DisabilityUnderHighSchoolStudentPlan,
+} from "domain/plan/implementation";
 
 describe("Plans", () => {
   describe("#count", () => {
@@ -21,16 +21,11 @@ describe("Plans", () => {
   });
 
   describe("availablePlans", () => {
-    const customer = new Customer(
-      new Age(45),
-      CINEMA_CITIZEN_CATEGORY.MEMBER,
-      DISABILITY_CATEGORY.NONE,
-      SCHOOL_CATEGORY.SENIOR_HIGH_SCHOOL,
-    );
-    test("plansが空の場合は0を返す", () => {
-      expect(new Plans([]).availablePlans(customer).count()).toBe(0);
-    });
+    const mockCustomer = jest.fn(() => {}) as unknown as Customer;
 
+    test("plansが空の場合は0を返す", () => {
+      expect(new Plans([]).availablePlans(mockCustomer).count()).toBe(0);
+    });
     test("isAvailable()がtrueのPlan数と、availablePlansの数は一致する", () => {
       const availableMock = {
         isAvailable: jest.fn(() => true),
@@ -39,8 +34,19 @@ describe("Plans", () => {
         isAvailable: jest.fn(() => false),
       } as unknown as Plan;
       const plans = new Plans([availableMock, unavailableMock, availableMock]);
-      const availablePlans = plans.availablePlans(customer);
+      const availablePlans = plans.availablePlans(mockCustomer);
       expect(availablePlans.count()).toBe(2);
+    });
+  });
+
+  describe("bestPricePlan", () => {
+    test("plansが空の場合は例外を投げる", () => {
+      expect(() => new Plans([]).bestPricePlan(new CinemaDate())).toThrow();
+    });
+    test("Plansが空ではない場合は最も安いPlanを返す", () => {
+      expect(allPlans.bestPricePlan(new CinemaDate())).toBe(
+        DisabilityUnderHighSchoolStudentPlan,
+      ); // memo: 最も安いプランが変わった場合、本テストは失敗する.
     });
   });
 });

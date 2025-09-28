@@ -1,4 +1,5 @@
 import { Customer } from "domain/customer";
+import { CinemaDate } from "domain/date";
 import { Plan } from "./plan";
 
 export class Plans {
@@ -14,5 +15,13 @@ export class Plans {
     );
 
     return new Plans(availablePlans);
+  }
+
+  bestPricePlan(cinemaDate: CinemaDate): Plan {
+    return this.plans.reduce((prev: Plan, current: Plan) => {
+      return prev.price(cinemaDate).value < current.price(cinemaDate).value
+        ? prev
+        : current;
+    });
   }
 }
