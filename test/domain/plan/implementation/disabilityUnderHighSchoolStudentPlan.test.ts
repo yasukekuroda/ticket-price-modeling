@@ -1,5 +1,9 @@
 import { Age, Customer } from "domain/customer";
-import { CINEMA_CITIZEN_CATEGORY, DISABILITY_CATEGORY, SCHOOL_CATEGORY } from "domain/customer/category";
+import {
+  CINEMA_CITIZEN_CATEGORY,
+  DISABILITY_CATEGORY,
+  SCHOOL_CATEGORY,
+} from "domain/customer/category";
 import { CinemaDate } from "domain/date";
 import { DisabilityUnderHighSchoolStudentPlan } from "domain/plan/implementation";
 
@@ -48,40 +52,56 @@ describe("DisabilityUnderHighSchoolStudentPlan", () => {
     describe("映画の日", () => {
       test("平日20時までの場合、900円を返す", () => {
         const cinemaWeekday = new CinemaDate("2025-09-01T19:59:59.000+09:00");
-        expect(DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value).toBe(900);
+        expect(
+          DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value,
+        ).toBe(900);
       });
       test("平日20時以降の場合、900円を返す", () => {
         const cinemaWeekday = new CinemaDate("2025-09-01T20:00:00.000+09:00");
-        expect(DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value).toBe(900);
+        expect(
+          DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value,
+        ).toBe(900);
       });
 
       test("土日20時までの場合、900円を返す", () => {
         const cinemaWeekday = new CinemaDate("2025-11-01T19:59:59.000+09:00");
-        expect(DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value).toBe(900);
+        expect(
+          DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value,
+        ).toBe(900);
       });
       test("土日20時以降の場合、900円を返す", () => {
         const cinemaWeekday = new CinemaDate("2025-11-01T20:00:00.000+09:00");
-        expect(DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value).toBe(900);
+        expect(
+          DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value,
+        ).toBe(900);
       });
     });
 
     describe("映画の日 以外", () => {
       test("平日20時までの場合、900円を返す", () => {
         const cinemaWeekday = new CinemaDate("2025-09-03T19:59:59.000+09:00");
-        expect(DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value).toBe(900);
+        expect(
+          DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value,
+        ).toBe(900);
       });
       test("平日20時以降の場合、900円を返す", () => {
         const cinemaWeekday = new CinemaDate("2025-09-03T20:00:00.000+09:00");
-        expect(DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value).toBe(900);
+        expect(
+          DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value,
+        ).toBe(900);
       });
 
       test("土日20時までの場合、900円を返す", () => {
         const cinemaWeekday = new CinemaDate("2025-09-06T19:59:59.000+09:00");
-        expect(DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value).toBe(900);
+        expect(
+          DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value,
+        ).toBe(900);
       });
       test("土日20時以降の場合、900円を返す", () => {
         const cinemaWeekday = new CinemaDate("2025-09-06T20:00:00.000+09:00");
-        expect(DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value).toBe(900);
+        expect(
+          DisabilityUnderHighSchoolStudentPlan.price(cinemaWeekday).value,
+        ).toBe(900);
       });
     });
   });
