@@ -9,11 +9,15 @@
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
+    "@types/prompts": "^2.4.9",
     "dayjs": "^1.11.18",
     "prettier": "^3.6.2",
     "ts-jest": "^29.4.4",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "prompts": "^2.4.2"
   }
 }
