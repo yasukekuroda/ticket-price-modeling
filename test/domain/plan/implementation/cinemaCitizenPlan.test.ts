@@ -1,5 +1,9 @@
 import { Age, Customer } from "domain/customer";
-import { CINEMA_CITIZEN_CATEGORY, DISABILITY_CATEGORY, SCHOOL_CATEGORY } from "domain/customer/category";
+import {
+  CINEMA_CITIZEN_CATEGORY,
+  DISABILITY_CATEGORY,
+  SCHOOL_CATEGORY,
+} from "domain/customer/category";
 import { CinemaDate } from "domain/date";
 import { CinemaCitizenPlan } from "domain/plan/implementation";
 

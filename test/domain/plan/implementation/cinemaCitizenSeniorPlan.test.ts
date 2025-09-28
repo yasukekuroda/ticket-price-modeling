@@ -1,11 +1,15 @@
 import { Age, Customer } from "domain/customer";
-import { CINEMA_CITIZEN_CATEGORY, DISABILITY_CATEGORY, SCHOOL_CATEGORY } from "domain/customer/category";
+import {
+  CINEMA_CITIZEN_CATEGORY,
+  DISABILITY_CATEGORY,
+  SCHOOL_CATEGORY,
+} from "domain/customer/category";
 import { CinemaDate } from "domain/date";
 import { CinemaCitizenSeniorPlan } from "domain/plan/implementation";
 
 describe("CinemaCitizenSeniorPlan", () => {
   describe(".isAvailable", () => {
-     test("シネマシティズン会員かつ60歳以上の場合、trueを返す", () => {
+    test("シネマシティズン会員かつ60歳以上の場合、trueを返す", () => {
       const customer = new Customer(
         new Age(60),
         CINEMA_CITIZEN_CATEGORY.MEMBER,

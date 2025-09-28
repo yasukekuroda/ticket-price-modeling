@@ -1,5 +1,9 @@
 import { Age, Customer } from "domain/customer";
-import { CINEMA_CITIZEN_CATEGORY, DISABILITY_CATEGORY, SCHOOL_CATEGORY } from "domain/customer/category";
+import {
+  CINEMA_CITIZEN_CATEGORY,
+  DISABILITY_CATEGORY,
+  SCHOOL_CATEGORY,
+} from "domain/customer/category";
 import { CinemaDate } from "domain/date";
 import { DisabilityPlan } from "domain/plan/implementation";
 
@@ -13,9 +17,7 @@ describe("DisabilityPlan", () => {
           DISABILITY_CATEGORY.HANDICAPPED,
           SCHOOL_CATEGORY.UNIVERSITY,
         );
-        expect(DisabilityPlan.isAvailable(customer)).toBe(
-          true,
-        );
+        expect(DisabilityPlan.isAvailable(customer)).toBe(true);
       });
       test("高校生以下の場合、falseを返す", () => {
         const customer = new Customer(
@@ -24,9 +26,7 @@ describe("DisabilityPlan", () => {
           DISABILITY_CATEGORY.HANDICAPPED,
           SCHOOL_CATEGORY.SENIOR_HIGH_SCHOOL,
         );
-        expect(DisabilityPlan.isAvailable(customer)).toBe(
-          false,
-        );
+        expect(DisabilityPlan.isAvailable(customer)).toBe(false);
       });
     });
     describe("障がい者手帳を持たない", () => {
@@ -37,9 +37,7 @@ describe("DisabilityPlan", () => {
           DISABILITY_CATEGORY.NONE,
           SCHOOL_CATEGORY.SENIOR_HIGH_SCHOOL,
         );
-        expect(DisabilityPlan.isAvailable(customer)).toBe(
-          false,
-        );
+        expect(DisabilityPlan.isAvailable(customer)).toBe(false);
       });
     });
   });
