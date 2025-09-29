@@ -1,12 +1,12 @@
 import { Age } from "domain/customer";
 import {
-    CINEMA_CITIZEN_CATEGORY,
-    DISABILITY_CATEGORY,
-    SCHOOL_CATEGORY,
+  CINEMA_CITIZEN_CATEGORY,
+  DISABILITY_CATEGORY,
+  SCHOOL_CATEGORY,
 } from "domain/customer/category";
 import prompts from "prompts";
 
-export interface PromptAnswers {
+interface PromptAnswers {
   age: number;
   cinemaCitizenCategory: CINEMA_CITIZEN_CATEGORY;
   disabilityCategory: DISABILITY_CATEGORY;
@@ -14,7 +14,7 @@ export interface PromptAnswers {
 }
 
 export async function askQuestions(): Promise<PromptAnswers> {
-  const answers = await prompts(
+  const answers: PromptAnswers = await prompts(
     [
       {
         type: "number",
@@ -78,5 +78,5 @@ export async function askQuestions(): Promise<PromptAnswers> {
     },
   );
 
-  return answers as PromptAnswers;
+  return answers;
 }
